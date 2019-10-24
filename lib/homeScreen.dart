@@ -39,6 +39,8 @@ class _HomeState extends State<Home> {
     )
   ];
 
+  
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -60,14 +62,9 @@ class _HomeState extends State<Home> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: _widgetOptions.elementAt(_selectedIndex),
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.amber[700],
-      ),
-      body: Container(
+    // widget list
+    List<Widget> _widgetBodyOptions = <Widget>[
+    Container(
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -374,13 +371,36 @@ class _HomeState extends State<Home> {
                 ),
               ), 
             ],
-          ), 
-        )
-      ], 
-    ),
-  ),
-),
+                ), 
+              )
+            ], 
+          ),
+        ),
+      ),
     ), 
+    Container(
+      child: Text('Search')
+    ),
+    Container(
+      child: Text('Recipe Book')
+    ),
+    Container(
+      child: Text('Notification')
+    ),
+    Container(
+      child: Text('Profile')
+    ),
+  ];
+
+  // build page
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: _widgetOptions.elementAt(_selectedIndex),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.amber[700],
+      ),
+      body: _widgetBodyOptions.elementAt(_selectedIndex),
     bottomNavigationBar: BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
