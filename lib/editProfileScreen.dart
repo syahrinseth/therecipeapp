@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/homeScreen.dart';
-import 'package:flutter_app/loginScreen.dart';
+import 'package:recipe_app/homeScreen.dart';
+import 'package:recipe_app/loginScreen.dart';
 
 TextEditingController firstNameController = TextEditingController(); TextEditingController lastNameController = TextEditingController(); TextEditingController mailController = TextEditingController(); TextEditingController passwordController = TextEditingController(); TextEditingController phoneController = TextEditingController();
 
