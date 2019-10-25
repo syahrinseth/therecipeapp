@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/homeScreen.dart'; 
 import 'package:recipe_app/loginScreen.dart'; 
 import 'package:shared_preferences/shared_preferences.dart'; 
+import 'package:recipe_app/util/const.dart';
+import 'package:flutter/services.dart';
+
 
 void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
@@ -11,11 +14,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isLoggedIn = false;
+  bool isDark = true;
 
   @override
   void initState() {
     _checkIfLoggedIn();
     super.initState();
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: isDark ? Constants.darkPrimary : Constants.lightPrimary,
+      statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
+    ));
   }
 
   void _checkIfLoggedIn() async {
@@ -34,8 +43,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: _isLoggedIn ? Home() :  Login(),
+        body: _isLoggedIn ? Home() :  Home(),
       ),
+      theme: isDark ? Constants.darkTheme : Constants.lightTheme,
     ); 
   }
 }
