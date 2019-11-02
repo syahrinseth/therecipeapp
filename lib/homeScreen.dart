@@ -20,37 +20,6 @@ class _HomeState extends State<Home> {
   final TextEditingController _searchControl = new TextEditingController();
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  // static const List<Widget> _widgetOptions = <Widget>[
-  //   Text(
-  //     'Home',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Search',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Recipe Book',
-  //     style: optionStyle,
-  //   ),
-  //   Text(
-  //     'Notification',
-  //     style: optionStyle
-  //   ),
-  //   Text(
-  //     'Profile',
-  //     style: optionStyle
-  //   )
-  // ];
-
-  
-
-  // Widget RecipePage() {
-  //   Return 
-  // }
-
-
-  
 
   void _onItemTapped(int index) {
     setState(() {
@@ -77,110 +46,20 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    Widget TrandingRecipes({int i}) {
+    
 
-    return Padding(
-      padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-      child: ListView(
-        children: <Widget>[
-          SizedBox(height: 20.0,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Trending Recipes",
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w800
-                ),
-              ),
-              FlatButton(
-                child: Text(
-                  "See all (43)",
-                  style: TextStyle(
-                    color: colorPrimary
-                  ),
-                ),
-                onPressed: () => null,
-              )
-            ],
-          ),
-          SizedBox(height: 10.00),
-          Container(
-            height: MediaQuery.of(context).size.height/2.4,
-            width: MediaQuery.of(context).size.width,
-            child: ListView.builder(
-              primary: false,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: 2,
-              itemBuilder: (BuildContext context, int index) {
-                Map recipe = recipes[index];
-                return Padding(
-                  padding: EdgeInsets.only(right: 10.00),
-                  child: SlideItem(
-                    img: recipe["img"],
-                    title: recipe['title'],
-                    rating: recipe['rating']
-                  ),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 10.0,)
-        ],
-      ),
-    );
-
-      // return Container(
-      //   child: Center(
-      //     child: Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: Column(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         crossAxisAlignment: CrossAxisAlignment.start,
-      //         children: <Widget>[
-      //           Card(
-      //               elevation: 4.0,
-      //               color: Colors.white,
-      //               margin: EdgeInsets.only(left: 10, right: 10), 
-      //               child: Padding(
-      //                 padding: const EdgeInsets.all(8.0),
-      //                 child: Column(
-      //                   mainAxisAlignment: MainAxisAlignment.center,
-      //                   children: <Widget>[
-      //                     ListTile(
-      //                       leading: Icon(Icons.fastfood),
-      //                       title: Text('Food $i'),
-      //                       subtitle: Text('Food Desc'),
-      //                       onTap: () {
-      //                         Navigator.push(
-      //                           context,
-      //                           MaterialPageRoute(
-      //                             builder: (context) => RecipeScreen(title: "text $i")
-      //                           )
-      //                         );
-      //                       },
-      //                     )
-      //                   ],
-      //                 ),
-      //               ),
-      //             ),
-      //         ],
-      //       ),
-      //     ),
-      //   )
-      // );
-    }
+    
 
     // app bar list
     List<Widget> _appBarOptions = <Widget>[
+      // tab 1
     PreferredSize(
           preferredSize: Size.fromHeight(0.0), // here the desired height
       child: AppBar(
         // ...
       )
     ),
+    // tab 2
     PreferredSize(
         child: Padding(
           padding: EdgeInsets.only(top: 30.0, left: 10.0, right: 10.0),
@@ -233,18 +112,21 @@ class _HomeState extends State<Home> {
           60.0,
         ),
       ),
+      // tab 3
       PreferredSize(
           preferredSize: Size.fromHeight(0.0), // here the desired height
           child: AppBar(
             // ...
           )
       ),
+      // tab 4
       PreferredSize(
           preferredSize: Size.fromHeight(0.0), // here the desired height
           child: AppBar(
             // ...
           )
       ),
+      // tab 5
       PreferredSize(
           preferredSize: Size.fromHeight(0.0), // here the desired height
           child: AppBar(
@@ -253,15 +135,116 @@ class _HomeState extends State<Home> {
       ),
   ];
 
-    // app body list
+    // App Body List
     List<Widget> _widgetBodyOptions = <Widget>[ 
-    TrandingRecipes(),
+    // Tab 1
+    Padding(
+        padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+        child: ListView(
+          children: <Widget>[
+            // Trending Recipes
+            SizedBox(height: 20.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Trending Recipes",
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.w800
+                  ),
+                ),
+                FlatButton(
+                  child: Text(
+                    "See all (43)",
+                    style: TextStyle(
+                      color: colorPrimary
+                    ),
+                  ),
+                  onPressed: () => null,
+                )
+              ],
+            ),
+            SizedBox(height: 10.00),
+            Container(
+              height: MediaQuery.of(context).size.height/2.4,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 7,
+                itemBuilder: (BuildContext context, int index) {
+                  Map recipe = recipes[index];
+                  return Padding(
+                    padding: EdgeInsets.only(right: 10.00),
+                    child: SlideItem(
+                      img: recipe["img"],
+                      title: recipe['title'],
+                      rating: recipe['rating']
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 10.0,),
+            // Top 10 Min Recipes
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Top 10 Min Recipes",
+                  style: TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.w800
+                  ),
+                ),
+                FlatButton(
+                  child: Text(
+                    "See all (43)",
+                    style: TextStyle(
+                      color: colorPrimary
+                    ),
+                  ),
+                  onPressed: () => null,
+                )
+              ],
+            ),
+            SizedBox(height: 10.00),
+            Container(
+              height: MediaQuery.of(context).size.height/2.4,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 7,
+                itemBuilder: (BuildContext context, int index) {
+                  Map recipe = recipes[index];
+                  return Padding(
+                    padding: EdgeInsets.only(right: 10.00),
+                    child: SlideItem(
+                      img: recipe["img"],
+                      title: recipe['title'],
+                      rating: recipe['rating']
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 10.0,),
+          ],
+        ),
+      ),
+    // Tab 2
     Container(
       child: Text('Search')
     ),
+    // Tab 3
     Container(
       child: Text('Recipe Book')
     ),
+    // Tab 4
     Container(
       child: Center(
         child: Padding(
@@ -288,6 +271,7 @@ class _HomeState extends State<Home> {
         ),
       )
     ),
+    // Tab 5
     Container(
         child: Center(
           child: Padding(

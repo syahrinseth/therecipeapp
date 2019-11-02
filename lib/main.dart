@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: _isLoggedIn ? Home() :  Home(),
+        body: _isLoggedIn ? Home() :  Login(),
       ),
       theme: isDark ? Constants.darkTheme : Constants.lightTheme,
     ); 
